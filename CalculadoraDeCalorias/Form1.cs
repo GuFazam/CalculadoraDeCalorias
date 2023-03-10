@@ -26,19 +26,54 @@ namespace CalculadoraDeCalorias
         {
             if (cmbAtividade.SelectedIndex.Equals(-1))
             {
-                MessageBox.Show("Por favor prencha todos os campos acima", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor escolha uma atividade valida", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxResultado.Clear();
                 cmbAtividade.Focus();
             }
-            else if (textBoxPeso.TextLength == 0)
+            else if (textBoxPeso.Text == "")
             {
-                MessageBox.Show("Por favor prencha todos os campos acima", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Por favor insira seu peso em KG", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxPeso.Clear();
+                textBoxPeso.Focus();
+            }
+            else if (Convert.ToInt32(textBoxPeso.Text) < 1 || Convert.ToInt32(textBoxPeso.Text) > 200)
+            {
+                MessageBox.Show("Peso deve estar entre 1kg e 200kg", "ATENÇÂO!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxResultado.Clear();
                 textBoxPeso.Focus();
             }
             else
             {
-                //textBoxResultado.Text = Convert.ToInt32(numericUpDownTempo.Value * textBoxPeso.Text);
+               switch (cmbAtividade.SelectedItem)
+                {
+                    case "Caminhada":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Natação":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Futbol":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Basketball":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Volei":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Pedalar de Bike":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+
+                    case "Correr":
+                        textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
+                        break;
+                }
             }
         }
 
@@ -49,9 +84,10 @@ namespace CalculadoraDeCalorias
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            cmbAtividade.SelectedIndex = -1;
             textBoxPeso.Text = " ";
             numericUpDownTempo.Value = 1;
-            cmbAtividade.SelectedIndex.Equals(-1);
+            textBoxResultado.Text = " ";
         }
     }
 }
