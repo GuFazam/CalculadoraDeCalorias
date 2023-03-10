@@ -88,10 +88,11 @@ namespace CalculadoraDeCalorias
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            cmbAtividade.SelectedIndex = -1;
-            textBoxPeso.Text = " ";
+            cmbAtividade.ResetText();
+            textBoxPeso.Clear();
             numericUpDownTempo.Value = 1;
-            textBoxResultado.Text = " ";
+            textBoxResultado.Clear();
+            cmbAtividade.Focus();
         }
     }
 }
