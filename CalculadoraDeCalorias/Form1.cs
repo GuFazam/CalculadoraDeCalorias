@@ -73,6 +73,10 @@ namespace CalculadoraDeCalorias
                     case "Correr":
                         textBoxResultado.Text = (Convert.ToDecimal(textBoxPeso.Text) * numericUpDownTempo.Value * 2).ToString();
                         break;
+
+                    default:
+                        MessageBox.Show("Escolha uma opção válida");
+                        break;
                 }
             }
         }
